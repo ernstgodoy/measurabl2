@@ -5,8 +5,9 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-        names:[{id:null , firstName:'',lastName:''}
-          // {id: 1, firstName:"caped", lastName: "baldy"}, {id:2, firstName:"demon", lastName:"cyborg"}
+        names:[
+          {id:null , firstName:'',lastName:'', ages: [{ age:null }]}
+        // {id: 1, firstName:"caped", lastName: "baldy", age:20}, {id: 2, firstName: "demon", lastName: "cyborg", age: 19}
         ]
   }
     this.getNames()
@@ -31,13 +32,16 @@ class App extends React.Component {
 
   dataTable = () =>{
     return this.state.names.map((name) => {
-      const { id, firstName, lastName } = name
+      const { id, firstName, lastName, ages} = name
+      const age = ages.map(x => x.age);
+      console.log("age:", age);
       console.log("name:", name)
       return (
       <tr key={Math.random()}>
       <td>{id}</td>
       <td>{firstName}</td>
       <td>{lastName}</td>
+      <td>{age}</td>
       </tr>
       )
     })
